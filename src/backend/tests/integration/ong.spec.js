@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../../src/app');
-const connection = require('../../src/database/connection')
+const connection = require('../../src/database/connection');
+const GenerateUniqueId = require('../../src/utils/GenerateUniqueId');
 
 
 describe('ONG', () => {
@@ -26,8 +27,10 @@ describe('ONG', () => {
          .post('/ongs')
          // .set('Authorization', 'id Válido da ong aqui') -> Para setar o Header
          .send({
+            id : "12345678",
             name: "APAE",
             email: "emailtop@gmail.com",
+            password: "123456",
             whatsapp: "31912341234",
             city: "Belo Horizonte",
             uf: "MG"
