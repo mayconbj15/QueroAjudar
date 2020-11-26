@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "Be The Hero",
+    "name": "Quero Ajudar",
     "slug": "bethehero",
     "privacy": "public",
     "sdkVersion": "36.0.0",
@@ -11,11 +11,11 @@
     ],
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/icon1.png",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#e02041"
+      "backgroundColor": "#2FB86E"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
