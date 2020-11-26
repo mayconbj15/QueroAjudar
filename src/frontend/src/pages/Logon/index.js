@@ -4,7 +4,7 @@ import { Link, useHistory } from 'react-router-dom'; // mudar a rota sem recarre
 
 import './styles.css';
 
-import heroesImg from '../../assets/quero-ajudar.png';
+import simbolImg from '../../assets/quero-ajudar.png';
 import logoImg from '../../assets/logo.svg';
 
 import api from '../../services/api';
@@ -36,7 +36,7 @@ export default function Logon() {
         <div className="logon-container">
             <section className="form">
                 
-                <img src={logoImg} alt="Be The Hero" />
+                <img src={logoImg} alt="Quero Ajudar" />
 
                 <form onSubmit={hundleLogin}>
                     <h1>Faça seu logon</h1>
@@ -48,6 +48,7 @@ export default function Logon() {
                     />
 
                     <input 
+                        type="password"
                         placeholder="Senha" 
                         value={password}
                         onChange={ e =>  setPassword(e.target.value)}
@@ -62,7 +63,7 @@ export default function Logon() {
                 </form>
             </section>
 
-            <img src={heroesImg} alt="Heroes" />
+            <img src={simbolImg} alt="Ajudantes" />
         </div>
     );
 }
