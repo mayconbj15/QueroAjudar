@@ -11,7 +11,8 @@ import api from '../../services/api';
 
 export default function Logon() {
 
-    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const history = useHistory();
 
@@ -19,9 +20,9 @@ export default function Logon() {
         e.preventDefault();
 
         try {
-          const res = await api.post('sessions', {id});  
-
-          localStorage.setItem("ongId", id);
+          const res = await api.post('sessions', {email, password});  
+            
+          localStorage.setItem("ongId", res.data.id);
           localStorage.setItem("ongName", res.data.name);
 
           history.push('/profile');
@@ -40,10 +41,17 @@ export default function Logon() {
                     <h1>Faça seu logon</h1>
 
                     <input 
-                        placeholder="Sua ID" 
-                        value={id}
-                        onChange={ e =>  setId(e.target.value)}
+                        placeholder="E-mail" 
+                        value={email}
+                        onChange={ e =>  setEmail(e.target.value)}
                     />
+
+                    <input 
+                        placeholder="Senha" 
+                        value={password}
+                        onChange={ e =>  setPassword(e.target.value)}
+                    />
+                    
                     <button className="button" type="submit">Entrar</button>
 
                     <Link className="back-link" to="/register">
