@@ -14,7 +14,7 @@ export default function Detail() {
     
     //mensagem para debug
     const incident = route.params.incident;    
-    const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso ${incident.title} com o valor de ${Intl.NumberFormat('pt-Br', { style: 'currency', currency: 'BRL'}).format(incident.value)}`;
+    const message = `Olá ${incident.name}, estou entrando em contato pois gostaria de ajudar no caso "${incident.title}" com o valor de ${Intl.NumberFormat('pt-Br', { style: 'currency', currency: 'BRL'}).format(incident.value)}`;
 
     // Função para voltar para a página anterior
     function navigationBack() {
@@ -23,7 +23,7 @@ export default function Detail() {
 
     function sendMail() {
         MailComposer.composeAsync({
-            subject: `Herói do caso: ${incident.title}`,
+            subject: `Ajudante: ${incident.title}`,
             recipients: [incident.email],
             body: message
         });
@@ -45,7 +45,7 @@ export default function Detail() {
             </View> 
 
             <View style={styles.incident}>
-                <Text style={[styles.incidentProperty, { marginTop: 0}]}>ONG</Text>
+                <Text style={[styles.incidentProperty, { marginTop: 0}]}>NOME:</Text>
                 <Text style={styles.incidentValue}>{incident.name} de {incident.city}/{incident.uf}</Text>
 
                 <Text style={styles.incidentProperty}>CASO:</Text>
@@ -59,8 +59,8 @@ export default function Detail() {
             </View>
 
             <View style={styles.contactBox}>
-                <Text style={styles.heroTitle}>Salve o dia!</Text>
-                <Text style={styles.heroTitle}>Seja herói desse caso.</Text>
+                <Text style={styles.heroTitle}>Faça alguém feliz!</Text>
+                <Text style={styles.heroTitle}>Ajude neste caso :)</Text>
 
                 <Text style={styles.heroDescription}>Entre em contato: </Text>
 

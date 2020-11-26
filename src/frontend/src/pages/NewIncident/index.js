@@ -36,6 +36,23 @@ export default function NewIncident() {
         }
     }
 
+    // function formatarMoeda(e) {
+    //     var elemento = e.target;
+    //     var valor = elemento.value;
+
+    //     valor = valor + '';
+    //     valor = parseInt(valor.replace(/[\D]+/g, ''));
+    //     valor = valor + '';
+    //     valor = valor.replace(/([0-9]{2})$/g, ",$1");
+
+    //     if (valor.length > 6) {
+    //         valor = valor.replace(/([0-9]{3}),([0-9]{2}$)/g, ".$1,$2");
+    //     }
+
+    //     elemento.value = valor;
+    //     if(valor == 'NaN') elemento.value = '';
+    // }
+
     return (
         <div className="new-incident-container">
             <div className="content">
@@ -61,9 +78,12 @@ export default function NewIncident() {
                         onChange={ e => setDescription(e.target.value)}
                     />
                     <input 
+                        id="valor"
+                        //maxlength="9"
                         placeholder="Valor em R$" 
                         value={value}
                         onChange={ e => setValue(e.target.value)}
+                        //onKeyUp={e => formatarMoeda(e)}
                     />
                     
 
