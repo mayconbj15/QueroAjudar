@@ -45,6 +45,7 @@ export default function Register() {
             history.push('/');
 
         } catch (error) {
+            console.log(error);
             alert('Erro no cadastro. Tente novamente.');
         }
     }
@@ -61,7 +62,7 @@ export default function Register() {
                         a encontrarem os casos da sua ONG.
                     </p>
                     <Link className="back-link" to="/">
-                        <FiArrowLeft size={16} color="#E02041" />
+                        <FiArrowLeft size={16} color="#2FB86E" />
                         Já tenho cadastro
                     </Link>
                 </section>
