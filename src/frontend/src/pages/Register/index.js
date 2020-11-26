@@ -12,6 +12,7 @@ export default function Register() {
 
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const [whatsapp, setWhatasapp] = useState('');
     const [city, setCity] = useState('');
     const [uf, setUf] = useState('');
@@ -28,7 +29,8 @@ export default function Register() {
         
         const data = {
             name, 
-            email, 
+            email,
+            password, 
             whatsapp, 
             city, 
             uf
@@ -37,7 +39,7 @@ export default function Register() {
         try {
             const response = await api.post('ongs', data);
 
-            alert(`Seu Id de acesso ${response.data.id}`);   
+            alert(`Conta criado com sucesso \n E-mail ${response.data.email}`);   
 
             // Assim que fizer o login vai para a Home ( '/' no caso )
             history.push('/');
@@ -73,6 +75,11 @@ export default function Register() {
                         placeholder="E-mail"
                         value={email}
                         onChange={e => setEmail(e.target.value)}
+                    />
+                    <input 
+                        placeholder="Senha"
+                        value={password}
+                        onChange={e => setPassword(e.target.value)}
                     />
                     <input 
                         placeholder="WhatsApp"

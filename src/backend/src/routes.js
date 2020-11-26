@@ -23,6 +23,7 @@ routes.post('/ongs', celebrate({
     [Segments.BODY]: Joi.object().keys({
         name: Joi.string().required(), // name dever ser: string e obrigatório
         email: Joi.string().required().email() , // email deve ser: string, obrigatório e dever ser um email
+        password: Joi.string().required(),
         whatsapp: Joi.string().required().min(10).max(11), // whatsapp deve ser: numero, obrgatório, minimo de 10 chars e maximo de 11 chars
         city: Joi.string().required(), // city deve ser: string e obrigatório
         uf: Joi.string().required().length(2) // uf deve ser: string, obrigatório e ter tamanho 2 
