@@ -1,6 +1,8 @@
 
 /**
  * O 'UP' será responsável por criar as tabelas.
+ * 
+ * @param {import('knex')} knex
  */
 exports.up = function(knex) {
   return knex.schema.createTable('ongs', function(table) {
@@ -16,6 +18,8 @@ exports.up = function(knex) {
 /**
  * O 'DOWN' será responsável por desfazer o que foi feito se houver algum 
  * problema.
+ * 
+ * @param {import('knex')} knex
  */
 exports.down = function(knex) {
   return knex.schema.dropTable('ongs');

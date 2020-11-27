@@ -1,15 +1,12 @@
 const connection = require('../database/connection');
 
 module.exports = {
-    
     /**
-     * Listar todos os incidents utilizando paginação.
-     * 
-     * @param {*} req 
-     * @param {*} res 
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
      */
     async index(req, res) {
-        const { page = 1 } = req.query;     
+        const page = parseInt(req.query.page) || 1;     
         
         const [count] = await connection('incidents').count();
 
@@ -32,6 +29,10 @@ module.exports = {
         return res.json(incidents);
     },
 
+    /**
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
+     */
     async create(req, res) {
         const { title, description, value } = req.body;
 
@@ -47,6 +48,10 @@ module.exports = {
         return res.json({ id });        
     },
 
+    /**
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
+     */
     async delete(req, res) {
         const { id } = req.params;
         const ong_id = req.headers.authorization;

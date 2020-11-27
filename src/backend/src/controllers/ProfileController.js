@@ -1,6 +1,10 @@
 const connection = require('../database/connection');
 
 module.exports = {
+    /**
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
+     */
     async index(req, res) {
         const ong_id = req.headers.authorization;
  
@@ -10,4 +14,4 @@ module.exports = {
 
         return res.json(incidents);
     },
-}
+};

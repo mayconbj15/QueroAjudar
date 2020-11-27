@@ -4,6 +4,10 @@ const connection = require('../database/connection');
  * Controller para login.
  */
 module.exports = {
+    /**
+     * @param {import('express').Request} req 
+     * @param {import('express').Response} res 
+     */
     async create(req, res) {
         const { id } = req.body;
  
@@ -18,4 +22,4 @@ module.exports = {
 
         return res.json(ong);
     },
-}
+};

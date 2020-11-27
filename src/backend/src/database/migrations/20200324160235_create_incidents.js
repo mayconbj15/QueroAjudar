@@ -1,4 +1,6 @@
-
+/**
+ * @param {import('knex')} knex
+ */
 exports.up = function(knex) {
     return knex.schema.createTable('incidents', function(table) {
         table.increments(); // Chave primária auto-incrmental
@@ -14,6 +16,9 @@ exports.up = function(knex) {
       });
 };
 
+/**
+ * @param {import('knex')} knex
+ */
 exports.down = function(knex) {
     return knex.schema.dropTable('incidents');  
 };
