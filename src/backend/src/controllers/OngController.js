@@ -35,6 +35,6 @@ module.exports = {
             uf
         });
 
-        res.json({ email });
+        res.json({ id, email });
     }
 };
