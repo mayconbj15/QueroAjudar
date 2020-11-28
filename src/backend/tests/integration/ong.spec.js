@@ -1,8 +1,6 @@
 const request = require('supertest');
 const app = require('../../src/app');
 const connection = require('../../src/database/connection');
-const GenerateUniqueId = require('../../src/utils/GenerateUniqueId');
-
 
 describe('ONG', () => {
 
@@ -19,7 +17,14 @@ describe('ONG', () => {
 
     // afterAll significa -> "Depois de todos os testes execute esta função do parâmetro"
     afterAll( async () => {
-        await connection.destroy(); // Desfazer a conexão do nosso teste com o banco de dados
+        await connection.migrate.rollback();
+        // await connection.destroy(); // Desfazer a conexão do nosso teste com o banco de dados
+    });
+
+    it('should list ONGs', async () => {
+        const response = await request(app).get('/ongs');
+
+        expect(response.body).toBeInstanceOf(Array);
     });
 
     it('should be able to create a new ONG', async () => { // 'Deveria ser possível criar uma nova ONG'
@@ -40,6 +45,4 @@ describe('ONG', () => {
         expect(response.body).toHaveProperty('id'); // "Espero que a resposta tenha um campo 'id' "
         expect(response.body.id).toHaveLength(8); // "Espero que esse 'id' tenha 8 caracteres"
     });
-    
 });
-
