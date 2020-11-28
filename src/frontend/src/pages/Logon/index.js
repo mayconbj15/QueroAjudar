@@ -4,14 +4,15 @@ import { Link, useHistory } from 'react-router-dom'; // mudar a rota sem recarre
 
 import './styles.css';
 
-import heroesImg from '../../assets/heroes.png';
+import simbolImg from '../../assets/quero-ajudar.png';
 import logoImg from '../../assets/logo.svg';
 
 import api from '../../services/api';
 
 export default function Logon() {
 
-    const [id, setId] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
 
     const history = useHistory();
 
@@ -19,9 +20,9 @@ export default function Logon() {
         e.preventDefault();
 
         try {
-          const res = await api.post('sessions', {id});  
-
-          localStorage.setItem("ongId", id);
+          const res = await api.post('sessions', {email, password});  
+            
+          localStorage.setItem("ongId", res.data.id);
           localStorage.setItem("ongName", res.data.name);
 
           history.push('/profile');
@@ -34,26 +35,35 @@ export default function Logon() {
     return (
         <div className="logon-container">
             <section className="form">
-                <img src={logoImg} alt="Be The Hero" />
+                
+                <img src={logoImg} alt="Quero Ajudar" />
 
                 <form onSubmit={hundleLogin}>
                     <h1>Faça seu logon</h1>
 
                     <input 
-                        placeholder="Sua ID" 
-                        value={id}
-                        onChange={ e =>  setId(e.target.value)}
+                        placeholder="E-mail" 
+                        value={email}
+                        onChange={ e =>  setEmail(e.target.value)}
                     />
+
+                    <input 
+                        type="password"
+                        placeholder="Senha" 
+                        value={password}
+                        onChange={ e =>  setPassword(e.target.value)}
+                    />
+                    
                     <button className="button" type="submit">Entrar</button>
 
                     <Link className="back-link" to="/register">
-                        <FiLogIn size={16} color="#E02041" />
+                        <FiLogIn size={16} color="#2FB86E" />
                         Não tenho cadastro
                     </Link>
                 </form>
             </section>
 
-            <img src={heroesImg} alt="Heroes" />
+            <img src={simbolImg} alt="Ajudantes" />
         </div>
     );
 }

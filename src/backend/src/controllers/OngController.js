@@ -17,7 +17,7 @@ module.exports = {
      * @param {import('express').Response} res 
      */
     async create(req, res) {
-        const { name, email, whatsapp, city, uf } = req.body;
+        const { name, email, password, whatsapp, city, uf } = req.body;
 
         // Gerar 4 bytes aleatórios, converter para string e retornar em 
         // forma de hexadecimal
@@ -27,13 +27,14 @@ module.exports = {
         // para que a execução espere até que a operação seja finalizada.
         await connection('ongs').insert({
             id,
-            name,
+            name,            
             email,
+            password,
             whatsapp,
             city,
             uf
         });
 
-        res.json({ id });
+        res.json({ id, email });
     }
 };

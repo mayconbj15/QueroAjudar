@@ -56,12 +56,12 @@ export default function Profile() {
     return (
         <div className="profile-container">
             <header>
-                <img src={logoImg} alt="Be The Hero" />
+                <img src={logoImg} alt="Quero Ajudar" />
                 <span>Bem vinda a {ongName}</span>
 
                 <Link className="button" to="/incidents/new"> Cadastrar novo caso</Link>
                 <button onClick={hundleLogout} type="button"> 
-                    <FiPower size={18} color="#e02041"/>
+                    <FiPower size={18} color="#2FB86E"/>
                 </button>
             </header>
 

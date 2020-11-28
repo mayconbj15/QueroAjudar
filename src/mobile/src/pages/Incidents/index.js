@@ -58,7 +58,7 @@ export default function Incidents() {
 
 
             <Text style={styles.title}>Bem-vindo!</Text>
-            <Text style={styles.description}>Escolha um dos casos abaixo e salve o dia.</Text>
+            <Text style={styles.description}>Escolha um dos casos abaixo para ajudar.</Text>
 
             <FlatList 
                 data={incidents}
@@ -69,7 +69,7 @@ export default function Incidents() {
                 onEndReachedThreshold={0.2}
                 renderItem={ ( { item: incident } ) => (
                     <View style={styles.incident}>
-                        <Text style={styles.incidentProperty}>ONG</Text>
+                        <Text style={styles.incidentProperty}>NOME:</Text>
                         <Text style={styles.incidentValue}>{incident.name}</Text>
 
                         <Text style={styles.incidentProperty}>CASO:</Text>
@@ -85,7 +85,7 @@ export default function Incidents() {
                             onPress={ () => navigationToDetail(incident) }
                         >
                             <Text style={styles.detailsButtonText}>Ver mais detalhes</Text>
-                            <Feather name="arrow-right" size={16} color="#E02041"/>
+                            <Feather name="arrow-right" size={16} color="#2FB86E"/>
                         </TouchableOpacity>       
                     </View>
                 )}
