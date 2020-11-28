@@ -1,4 +1,6 @@
-
+/**
+ * @param {import('knex')} knex
+ */
 exports.up = function(knex) {
     return knex.schema.createTable('ongs', function(table) {
         table.string('id').primary(); // Id será chave primária
@@ -11,6 +13,9 @@ exports.up = function(knex) {
       });
 };
 
+/**
+ * @param {import('knex')} knex
+ */
 exports.down = function(knex) {
     return knex.schema.dropTable('ongs');
 };
