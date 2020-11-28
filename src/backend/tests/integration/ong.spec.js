@@ -1,6 +1,7 @@
 const request = require('supertest');
 const app = require('../../src/app');
 const connection = require('../../src/database/connection');
+const helpers = require('../helpers');
 
 describe('ONG', () => {
 
@@ -28,21 +29,11 @@ describe('ONG', () => {
     });
 
     it('should be able to create a new ONG', async () => { // 'Deveria ser possível criar uma nova ONG'
-         const response = await request(app) // Realizar requisição utilizando o supertest
-         .post('/ongs')
-         // .set('Authorization', 'id Válido da ong aqui') -> Para setar o Header
-         .send({
-            id : "12345678",
-            name: "APAE",
-            email: "emailtop@gmail.com",
-            password: "123456",
-            whatsapp: "31912341234",
-            city: "Belo Horizonte",
-            uf: "MG"
-        });
+         const response = await helpers.createOng(app);
 
         // console.log(response.body);
         expect(response.body).toHaveProperty('id'); // "Espero que a resposta tenha um campo 'id' "
         expect(response.body.id).toHaveLength(8); // "Espero que esse 'id' tenha 8 caracteres"
+        expect(response.body).toHaveProperty('email'); // "Espero que a resposta tenha um campo 'email' "
     });
 });
